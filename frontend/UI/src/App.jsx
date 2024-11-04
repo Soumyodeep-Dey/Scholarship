@@ -1,16 +1,20 @@
-import { useState } from 'react'
 import './App.css'
-
+import Navbar from './components/Navbar/Navbar';
+import LandingPage from './components/LandingPage/LandingPage';
+import Footer from './components/Footer/Footer';
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <LandingPage />
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }
 
-export default App
+export default App;
