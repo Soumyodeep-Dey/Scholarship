@@ -1,10 +1,13 @@
 // src/pages/LandingPage.jsx
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header Section */}
-      <section className="bg-blue-800 text-white py-16 text-center">
+      <section className="bg-blue-800 text-white py-6 text-center">
         <h1 className="text-6xl font-bold mb-4 text-orange-400">Prime Minister Special Scholarship Scheme</h1>
         <p className="text-2xl font-light">
           A scholarship initiative dedicated to empowering students across the nation
@@ -19,7 +22,7 @@ const LandingPage = () => {
         <img
           src="https://cdn.narendramodi.in/cmsuploads/0.81964300_1438597086_0-49155900-1438155410-dsc-2927.jpg" // Replace with the actual picture URL
           alt="Prime Minister"
-          className="w-1/2 h-1/4 shadow-lg"
+          className="w-1/2 h-auto shadow-lg rounded-lg transform transition-transform duration-500 hover:scale-105"
         />
       </section>
 
@@ -36,54 +39,45 @@ const LandingPage = () => {
 
         {/* Features Section */}
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
-          <div className="p-10 bg-white shadow-lg rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            <h3 className="text-2xl font-semibold text-blue-700 mb-4">Easy Application</h3>
-            <p className="text-gray-600">
-              Apply from anywhere with a fully digital, paperless process.
-            </p>
-          </div>
-
-          <div className="p-10 bg-white shadow-lg rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            <h3 className="text-2xl font-semibold text-blue-700 mb-4">Real-Time Status</h3>
-            <p className="text-gray-600">
-              Track your application progress with real-time updates.
-            </p>
-          </div>
-
-          <div className="p-10 bg-white shadow-lg rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            <h3 className="text-2xl font-semibold text-blue-700 mb-4">24/7 Support</h3>
-            <p className="text-gray-600">
-              Access our 24/7 chatbot for any questions or support.
-            </p>
-          </div>
-
-          <div className="p-10 bg-white shadow-lg rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            <h3 className="text-2xl font-semibold text-blue-700 mb-4">Document Upload</h3>
-            <p className="text-gray-600">
-              Upload necessary documents securely from your device.
-            </p>
-          </div>
-
-          <div className="p-10 bg-white shadow-lg rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            <h3 className="text-2xl font-semibold text-blue-700 mb-4">Inclusive for All</h3>
-            <p className="text-gray-600">
-              Designed for students from every region and background.
-            </p>
-          </div>
-
-          <div className="p-10 bg-white shadow-lg rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            <h3 className="text-2xl font-semibold text-blue-700 mb-4">Secure and Trusted</h3>
-            <p className="text-gray-600">
-              A reliable system built to protect your information.
-            </p>
-          </div>
+          {[
+            {
+              title: "Easy Application",
+              description: "Apply from anywhere with a fully digital, paperless process.",
+            },
+            {
+              title: "Real-Time Status",
+              description: "Track your application progress with real-time updates.",
+            },
+            {
+              title: "24/7 Support",
+              description: "Access our 24/7 chatbot for any questions or support.",
+            },
+            {
+              title: "Document Upload",
+              description: "Upload necessary documents securely from your device.",
+            },
+            {
+              title: "Inclusive for All",
+              description: "Designed for students from every region and background.",
+            },
+            {
+              title: "Secure and Trusted",
+              description: "A reliable system built to protect your information.",
+            },
+          ].map((feature, index) => (
+            <div key={index} className="p-10 bg-white shadow-lg rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <h3 className="text-2xl font-semibold text-blue-700 mb-4">{feature.title}</h3>
+              <p className="text-gray-600">{feature.description}</p>
+            </div>
+          ))}
         </section>
-
 
         {/* Call-to-Action */}
         <div className="text-center mt-12">
-          <button className="bg-orange-500 text-white py-5 px-14 rounded-full font-bold shadow-lg
-           hover:bg-orange-600 transition duration-200">
+          <button
+            onClick={() => navigate('/register')}
+            className="bg-orange-500 text-white py-5 px-14 rounded-full font-bold shadow-lg
+            hover:bg-orange-600 hover:shadow-2xl transition duration-200 transform active:scale-95">
             Start Your Application
           </button>
         </div>
