@@ -25,7 +25,7 @@ const Login = () => {
       alert("Security code doesn't match. Please try again.");
     } else {
       console.log("Login successful:", data);
-      navigate('/dashboard'); // Navigate to dashboard upon successful login
+      navigate(`/dashboard`); // Navigate to dashboard upon successful login
     }
   };
 
