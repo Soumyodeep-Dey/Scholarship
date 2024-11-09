@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
-import LandingPage from './components/LandingPage/LandingPage';
+import LandingPage from './components/Pages/LandingPage';
 import Footer from './components/Footer/Footer';
 import Login from './components/Auth/Login/Login';
 import Register from './components/Auth/Register/Register';
@@ -11,8 +11,9 @@ import EligibilityCriteria from './components/Usefull_Links/Eligibility';
 import DocumentUpload from './components/Usefull_Links/Documents';
 import HowToApply from './components/Usefull_Links/HowToApply';
 import NotFound from './components/NotFound/NotFound';
-import Dashboard from './components/Dashboard/Dashboard'; // Import Dashboard
-import FormPreview from './components/Auth/Register/FormPreview';
+import Dashboard from './components/Dashboard/Dashboard';
+import FormPreview from './components/Auth/FormPreview/FormPreview';
+import ForgetIdPass from './components/Pages/ForgetIdPass';
 
 function App() {
   return (
@@ -21,25 +22,31 @@ function App() {
         <Navbar />
         <main className="flex-grow">
           <Routes>
+
+            {/* Landing Page */}
             <Route path="/" element={<LandingPage />} />
+            {/* Forget Id or Password Page */}
+            <Route path='/forget-id-pass' element={<ForgetIdPass />} />
+
             
             {/* Auth-related routes */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/form-preview" element={<FormPreview />} />
-            
+
             {/* Useful links routes */}
             <Route path="/guidelines" element={<Guidelines />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/eligibility" element={<EligibilityCriteria />} />
             <Route path="/document-upload" element={<DocumentUpload />} />
             <Route path="/how-to-apply" element={<HowToApply />} />
-            
+
             {/* User Dashboard */}
             <Route path="/dashboard" element={<Dashboard />} />
-            
+
             {/* Catch-all route for 404 */}
             <Route path="*" element={<NotFound />} />
+
           </Routes>
         </main>
         <Footer />

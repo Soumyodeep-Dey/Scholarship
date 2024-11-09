@@ -5,12 +5,15 @@ import { useNavigate } from 'react-router-dom';
 
 function BasicDetails({ nextStep }) {
     const { register, watch, formState: { errors } } = useFormContext();
+
+    
     const navigate = useNavigate();
     const selectedCaste = watch("caste");
-    const [permanentAddress, setPermanentAddress] = useState("");
-    const [currentAddress, setCurrentAddress] = useState("");
+
 
     // Function to handle copying the permanent address to current address
+    const [permanentAddress, setPermanentAddress] = useState("");
+    const [currentAddress, setCurrentAddress] = useState("");
     const handleCopyAddress = () => {
         setCurrentAddress(permanentAddress);
     };
@@ -47,7 +50,7 @@ function BasicDetails({ nextStep }) {
                 <label className="block text-lg font-semibold mb-2">Phone Number</label>
                 <input
                     type="tel"
-                    {...register("phone", {
+                    {...register("phonenumber", {
                         required: "Phone number is required",
                         pattern: {
                             value: /^[0-9]{10}$/,
@@ -57,7 +60,7 @@ function BasicDetails({ nextStep }) {
                     className="input-field border border-gray-300 rounded-lg p-3 w-full transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Enter your phone number"
                 />
-                {errors.phone && <p className="error text-red-500 mt-1">{errors.phone.message}</p>}
+                {errors.phonenumber && <p className="error text-red-500 mt-1">{errors.phonenumber.message}</p>}
             </div>
 
             {/* Date of Birth */}

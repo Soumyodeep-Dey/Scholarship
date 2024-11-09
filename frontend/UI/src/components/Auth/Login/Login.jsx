@@ -1,9 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [userData, setUserData] = useState(null);
   const [securityCode, setSecurityCode] = useState(generateSecurityCode());
   const navigate = useNavigate();
 
@@ -24,10 +25,12 @@ const Login = () => {
     if (data.securityCode !== securityCode) {
       alert("Security code doesn't match. Please try again.");
     } else {
-      console.log("Login successful:", data);
-      navigate(`/dashboard`); // Navigate to dashboard upon successful login
+      console.log("Login successful.", data);
+      setUserData(data); // Store data in state
+      navigate('/dashboard', { state: { userData: data } });
     }
   };
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -121,9 +124,15 @@ const Login = () => {
         {/* Forgot Password or Application ID */}
         <p className="text-center text-gray-600 mt-6">
           Forgot Application ID or password?{' '}
-          <a href="/" className="text-orange-600 font-bold hover:underline">
+          <Link
+            to={{
+              pathname: "/forget-id-pass",
+              state: { userData }
+            }}
+            className="text-orange-600 font-bold hover:underline"
+          >
             Click Here
-          </a>
+          </Link>
         </p>
       </div>
     </div>

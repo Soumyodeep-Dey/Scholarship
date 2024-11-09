@@ -47,7 +47,7 @@ const Navbar = () => {
       {/* Buttons */}
       <div className="flex space-x-3">
         {/* Hide "Applicant Login" and "Fresh Applicant" if on the /dashboard route */}
-        {location.pathname !== '/dashboard' && (
+        {location.pathname !== '/dashboard' && location.pathname !== '/form-preview'&& (
           <>
             {location.pathname !== '/login' && (
               <button

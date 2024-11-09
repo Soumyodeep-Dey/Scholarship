@@ -1,13 +1,20 @@
 import { useFormContext } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-function Bank({ prevStep }) {
-    const { register, watch, formState: { errors } } = useFormContext();
+function Bank({ prevStep, onSubmit }) {
+    const { register, watch, formState: { errors }, handleSubmit } = useFormContext();
     const [reEnteredAccount, setReEnteredAccount] = useState("");
     const accountNumber = watch("accountNumber");
-    const navigate = useNavigate(); // Initialize the navigate function
+
+    // Handle form submission with validation
+    const handleBankSubmit = (e) => {
+        if (accountNumber !== reEnteredAccount) {
+            alert("Account numbers do not match.");
+        } else {
+            onSubmit(e); // Call parent onSubmit function
+        }
+    };
 
     return (
         <div>
@@ -89,7 +96,33 @@ function Bank({ prevStep }) {
                     />
                     {errors.ifscCode && <p className="error text-red-500 mt-1">{errors.ifscCode.message}</p>}
                 </div>
+
+                {/*  1st page of passbook */}
+                <div className="mb-4">
+                    <label className="block text-lg font-semibold mb-2 text-gray-800"> First Page of Bank Passbook (PDF)</label>
+                    <input
+                        type="file"
+                        {...register("bankPassbook", {
+                            required: "Bank document is required",
+                            validate: {
+                                fileType: (value) =>
+                                    value[0] && value[0].type !== "application/pdf"
+                                        ? "Only PDF files are allowed."
+                                        : true,
+                                fileSize: (value) =>
+                                    value[0] && value[0].size > 2 * 1024 * 1024
+                                        ? "File size should not exceed 2MB."
+                                        : true,
+                            },
+                        })}
+                        accept="application/pdf"
+                        className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out"
+                    />
+                    {errors.bankPassbook && <p className="error text-red-500 mt-1">{errors.bankPassbook.message}</p>}
+                </div>
+
             </div>
+
             {/* Navigation Buttons */}
             <div className="flex justify-between mt-6">
                 <button type="button" className="px-6 py-2 bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-all duration-300 hover:bg-blue-800 hover:shadow-lg active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" onClick={prevStep}>
@@ -97,17 +130,11 @@ function Bank({ prevStep }) {
                 </button>
 
                 <button
-                    type="button"
-                    onClick={() => {
-                        if (accountNumber === reEnteredAccount) {
-                            navigate('/form-preview'); // Redirect to /form-preview
-                        } else {
-                            alert("Account numbers do not match.");
-                        }
-                    }}
-                    className="px-6 py-2 bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-all duration-300 hover:bg-blue-800 hover:shadow-lg active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    type="submit"
+                    onClick={handleSubmit(handleBankSubmit)} // Use handleSubmit for validation and submission
+                    className="px-6 py-2 bg-orange-600 text-white font-semibold rounded-lg shadow-md transition-all duration-300 hover:bg-orange-700 hover:shadow-lg active:bg-orange-800 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
                 >
-                    Next
+                    Submit the form
                 </button>
             </div>
         </div>
@@ -117,6 +144,7 @@ function Bank({ prevStep }) {
 // PropTypes for the component
 Bank.propTypes = {
     prevStep: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 };
 
 export default Bank;

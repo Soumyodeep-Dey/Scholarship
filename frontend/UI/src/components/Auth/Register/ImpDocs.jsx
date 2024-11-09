@@ -1,8 +1,14 @@
+import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
 function ImpDocs({ prevStep, nextStep }) {
     const { register, formState: { errors } } = useFormContext();
+    const [isDisabled, setIsDisabled] = useState(false);
+
+    const handleDisabilityChange = (e) => {
+        setIsDisabled(e.target.checked);
+    };
 
     return (
         <div>
@@ -11,13 +17,15 @@ function ImpDocs({ prevStep, nextStep }) {
             </h3>
 
             <div className="mb-6">
-
                 {/* Family Net Income */}
                 <div className="mb-6">
                     <label className="block text-lg font-semibold mb-2">Family Net Income</label>
                     <input
                         type="text"
-                        {...register("income", { required: "Family Net Income is required" })}
+                        {...register("income", {
+                            required: "Family Net Income is required",
+                            setValueAs: value => value.trim()
+                        })}
                         className="input-field border border-gray-300 rounded-lg p-3 w-full transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Enter your Family Net Income"
                     />
@@ -32,17 +40,15 @@ function ImpDocs({ prevStep, nextStep }) {
                         {...register("incomeCertificate", {
                             required: "Income certificate is required",
                             validate: {
-                                fileType: (value) => (
+                                fileType: (value) =>
                                     value[0] && value[0].type !== "application/pdf"
                                         ? "Only PDF files are allowed."
-                                        : true
-                                ),
-                                fileSize: (value) => (
+                                        : true,
+                                fileSize: (value) =>
                                     value[0] && value[0].size > 2 * 1024 * 1024
                                         ? "File size should not exceed 2MB."
-                                        : true
-                                )
-                            }
+                                        : true,
+                            },
                         })}
                         accept="application/pdf"
                         className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out"
@@ -50,7 +56,7 @@ function ImpDocs({ prevStep, nextStep }) {
                     {errors.incomeCertificate && <p className="error text-red-500 mt-1">{errors.incomeCertificate.message}</p>}
                 </div>
 
-                {/* Domicile Certificate Field */}
+                {/* Domicile Certificate */}
                 <div className="mb-4">
                     <label className="block text-lg font-semibold mb-2 text-gray-800">Domicile Certificate</label>
                     <input
@@ -58,17 +64,15 @@ function ImpDocs({ prevStep, nextStep }) {
                         {...register("domicileCertificate", {
                             required: "Domicile certificate is required",
                             validate: {
-                                fileType: (value) => (
+                                fileType: (value) =>
                                     value[0] && value[0].type !== "application/pdf"
                                         ? "Only PDF files are allowed."
-                                        : true
-                                ),
-                                fileSize: (value) => (
+                                        : true,
+                                fileSize: (value) =>
                                     value[0] && value[0].size > 2 * 1024 * 1024
                                         ? "File size should not exceed 2MB."
-                                        : true
-                                )
-                            }
+                                        : true,
+                            },
                         })}
                         accept="application/pdf"
                         className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out"
@@ -78,27 +82,35 @@ function ImpDocs({ prevStep, nextStep }) {
 
                 {/* Disability Certificate */}
                 <div className="mb-4">
-                    <label className="block text-lg font-semibold mb-2 text-gray-800">Disability Certificate (if applicable)</label>
+                    <label className="block text-lg font-semibold mb-2 text-gray-800">Do you have a Disability?</label>
                     <input
-                        type="file"
-                        {...register("disabilityCertificate", {
-                            validate: {
-                                fileType: (value) => (
-                                    value[0] && value[0].type !== "application/pdf"
-                                        ? "Only PDF files are allowed."
-                                        : true
-                                ),
-                                fileSize: (value) => (
-                                    value[0] && value[0].size > 2 * 1024 * 1024
-                                        ? "File size should not exceed 2MB."
-                                        : true
-                                )
-                            }
-                        })}
-                        accept="application/pdf"
-                        className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out"
+                        type="checkbox"
+                        onChange={handleDisabilityChange}
+                        className="mb-4"
                     />
-                    {errors.disabilityCertificate && <p className="error text-red-500 mt-1">{errors.disabilityCertificate.message}</p>}
+                    {isDisabled && (
+                        <div>
+                            <label className="block text-lg font-semibold mb-2 text-gray-800">Disability Certificate (if applicable)</label>
+                            <input
+                                type="file"
+                                {...register("disabilityCertificate", {
+                                    validate: {
+                                        fileType: (value) =>
+                                            value[0] && value[0].type !== "application/pdf"
+                                                ? "Only PDF files are allowed."
+                                                : true,
+                                        fileSize: (value) =>
+                                            value[0] && value[0].size > 2 * 1024 * 1024
+                                                ? "File size should not exceed 2MB."
+                                                : true,
+                                    },
+                                })}
+                                accept="application/pdf"
+                                className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out"
+                            />
+                            {errors.disabilityCertificate && <p className="error text-red-500 mt-1">{errors.disabilityCertificate.message}</p>}
+                        </div>
+                    )}
                 </div>
 
                 {/* Identity Proof */}
@@ -109,24 +121,22 @@ function ImpDocs({ prevStep, nextStep }) {
                         {...register("identityProof", {
                             required: "Identity proof is required",
                             validate: {
-                                fileType: (value) => (
-                                    value[0] && !["application/pdf", "image/jpeg", "image/png"].includes(value[0].type)
+                                fileType: (value) =>
+                                    value[0] &&
+                                        !["application/pdf", "image/jpeg", "image/png"].includes(value[0].type)
                                         ? "Only PDF or image files are allowed."
-                                        : true
-                                ),
-                                fileSize: (value) => (
+                                        : true,
+                                fileSize: (value) =>
                                     value[0] && value[0].size > 2 * 1024 * 1024
                                         ? "File size should not exceed 2MB."
-                                        : true
-                                )
-                            }
+                                        : true,
+                            },
                         })}
                         accept="application/pdf, image/jpeg, image/png"
                         className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out"
                     />
                     {errors.identityProof && <p className="error text-red-500 mt-1">{errors.identityProof.message}</p>}
                 </div>
-
 
                 {/* Passport-sized Photograph */}
                 <div className="mb-4">
@@ -136,17 +146,15 @@ function ImpDocs({ prevStep, nextStep }) {
                         {...register("passportPhoto", {
                             required: "Passport-sized photograph is required",
                             validate: {
-                                fileType: (value) => (
+                                fileType: (value) =>
                                     value[0] && !["image/jpeg", "image/png"].includes(value[0].type)
                                         ? "Only image files are allowed."
-                                        : true
-                                ),
-                                fileSize: (value) => (
+                                        : true,
+                                fileSize: (value) =>
                                     value[0] && value[0].size > 1 * 1024 * 1024
                                         ? "File size should not exceed 1MB."
-                                        : true
-                                )
-                            }
+                                        : true,
+                            },
                         })}
                         accept="image/jpeg, image/png"
                         className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 ease-in-out"
