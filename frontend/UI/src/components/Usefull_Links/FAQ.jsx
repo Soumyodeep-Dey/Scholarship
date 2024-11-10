@@ -2,63 +2,63 @@
 
 const FAQ = () => {
     return (
-        <div className="max-w-6xl mx-auto py-12 px-4">
-            <h1 className="text-4xl font-bold mb-6 text-blue-800">Frequently Asked Questions</h1>
+        <div className="max-w-6xl mx-auto py-16 px-6 bg-gray-50 rounded-lg shadow-lg">
+            <h1 className="text-5xl font-extrabold mb-10 text-blue-900 text-center">Frequently Asked Questions</h1>
 
-            <div className="space-y-8 text-gray-700 text-lg">
-                <div>
-                    <h2 className="font-semibold text-xl">1. Who is eligible to apply for this scholarship?</h2>
-                    <p>
-                        Eligibility criteria include academic qualifications, age limits, family income, and residency requirements. Please refer to the <strong>Eligibility Criteria</strong> section for detailed information.
+            <div className="space-y-8 text-gray-800 text-lg">
+                <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+                    <h2 className="font-bold text-2xl text-blue-700 mb-4">1. Who is eligible to apply for this scholarship?</h2>
+                    <p className="leading-relaxed">
+                        Applicants must meet specific criteria, including minimum academic marks of 60%, age limits, family income thresholds, and residency status. For complete details, please see the <strong>Eligibility Criteria</strong> section.
                     </p>
                 </div>
 
-                <div>
-                    <h2 className="font-semibold text-xl">2. How do I apply for the scholarship?</h2>
-                    <p>
-                        To apply, first complete the online registration on our portal. After registration, fill out the application form, upload the required documents, and submit before the deadline.
+                <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+                    <h2 className="font-bold text-2xl text-blue-700 mb-4">2. How do I apply for the scholarship?</h2>
+                    <p className="leading-relaxed">
+                        To apply, begin by registering on our online portal. After completing registration, fill out the application form, upload all required documents, and submit it before the deadline.
                     </p>
                 </div>
 
-                <div>
-                    <h2 className="font-semibold text-xl">3. What documents are required for the application?</h2>
-                    <p>
-                        Required documents typically include proof of identity, domicile certificate, income certificate, academic transcripts, and recent passport-size photographs. Additional documents may be required based on specific eligibility criteria.
+                <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+                    <h2 className="font-bold text-2xl text-blue-700 mb-4">3. What documents are required for the application?</h2>
+                    <p className="leading-relaxed">
+                        Required documents include proof of identity (e.g., Aadhar card), domicile certificate, family income certificate, academic transcripts, and a recent passport-sized photograph. Additional documents may apply based on specific eligibility requirements.
                     </p>
                 </div>
 
-                <div>
-                    <h2 className="font-semibold text-xl">4. Is there an application fee?</h2>
-                    <p>
-                        No, there is no application or registration fee for eligible students. Applications are completely free of charge.
+                <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+                    <h2 className="font-bold text-2xl text-blue-700 mb-4">4. Is there an application fee?</h2>
+                    <p className="leading-relaxed">
+                        No, the application and registration are entirely free for eligible applicants. There are no hidden charges associated with the application process.
                     </p>
                 </div>
 
-                <div>
-                    <h2 className="font-semibold text-xl">5. Can I edit my application after submission?</h2>
-                    <p>
-                        Once submitted, the application cannot be edited. Please ensure all information is accurate before final submission.
+                <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+                    <h2 className="font-bold text-2xl text-blue-700 mb-4">5. Can I edit my application after submission?</h2>
+                    <p className="leading-relaxed">
+                        Unfortunately, applications cannot be edited once submitted. Please review all information carefully to ensure accuracy before submitting.
                     </p>
                 </div>
 
-                <div>
-                    <h2 className="font-semibold text-xl">6. How will I know if I am selected for the scholarship?</h2>
-                    <p>
-                        Selected applicants will be notified via email and can also check their application status through the portal. Notifications will include further instructions for verification and disbursement.
+                <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+                    <h2 className="font-bold text-2xl text-blue-700 mb-4">6. How will I know if I am selected for the scholarship?</h2>
+                    <p className="leading-relaxed">
+                        Selected applicants will be notified via email and can also check their application status on the portal. Notifications will include further instructions on verification and the next steps for scholarship disbursement.
                     </p>
                 </div>
 
-                <div>
-                    <h2 className="font-semibold text-xl">7. Can I apply for more than one scholarship?</h2>
-                    <p>
-                        No, students who are currently receiving another scholarship are not eligible for this program. The scholarship aims to support students who are not benefiting from any other financial aid.
+                <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+                    <h2 className="font-bold text-2xl text-blue-700 mb-4">7. Can I apply for more than one scholarship?</h2>
+                    <p className="leading-relaxed">
+                        No, this scholarship is for students who are not receiving any other form of financial aid. Applicants already receiving other scholarships are not eligible.
                     </p>
                 </div>
 
-                <div>
-                    <h2 className="font-semibold text-xl">8. Who can I contact for help with my application?</h2>
-                    <p>
-                        For assistance, please contact our support team through the <strong>Contact Us</strong> section on our website. We are available to answer any questions regarding the application process.
+                <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+                    <h2 className="font-bold text-2xl text-blue-700 mb-4">8. Who can I contact for help with my application?</h2>
+                    <p className="leading-relaxed">
+                        For assistance, please reach out to our support team through the <strong>Contact Us</strong> section on our website. Our team is available to provide guidance throughout the application process.
                     </p>
                 </div>
             </div>

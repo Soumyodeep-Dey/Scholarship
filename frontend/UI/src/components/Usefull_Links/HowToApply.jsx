@@ -2,42 +2,56 @@
 
 const HowToApply = () => {
   return (
-    <div className="max-w-6xl mx-auto py-12 px-4">
-      <h1 className="text-4xl font-bold mb-6 text-blue-800">How to Apply</h1>
+    <div className="max-w-6xl mx-auto py-16 px-6 bg-gray-50 rounded-lg shadow-lg">
+      <h1 className="text-5xl font-extrabold mb-10 text-blue-900 text-center">How to Apply</h1>
 
-      <div className="space-y-6 text-gray-700 text-lg">
-        <section>
-          <h2 className="font-semibold text-2xl mb-3">Step 1: Register on the Portal</h2>
-          <p>
-            Begin by registering an account on the scholarship portal. Use a valid email address and create a secure password. You will receive a confirmation email to verify your account.
+      <div className="space-y-10 text-gray-800 text-lg">
+        <section className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+          <h2 className="font-bold text-2xl text-blue-700 mb-4">Step 1: Start Your Application</h2>
+          <p className="leading-relaxed">
+            Click on the <strong>&quot;Fresh Applicant&quot;</strong> button in the navigation bar or the <strong>&quot;Start Your Application&quot;</strong> button on the landing page. This will take you to the registration page where you can create an account with a valid email address and password. After registering, check your email to verify your account.
           </p>
         </section>
 
-        <section>
-          <h2 className="font-semibold text-2xl mb-3">Step 2: Complete the Application Form</h2>
-          <p>
-            Log in to your account and access the application form. Fill in all required details accurately, including personal information, academic history, and financial background. Double-check each section before moving forward.
+        <section className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+          <h2 className="font-bold text-2xl text-blue-700 mb-4">Step 2: Fill in Basic Details</h2>
+          <p className="leading-relaxed">
+            Once logged in, you&apos;ll begin the application form by filling out your basic details, including personal information like your full name, date of birth, and contact information. Review these details carefully before proceeding to the next section.
           </p>
         </section>
 
-        <section>
-          <h2 className="font-semibold text-2xl mb-3">Step 3: Upload Required Documents</h2>
-          <p>
-            Ensure that all necessary documents are ready for upload. Typical documents include proof of identity, academic transcripts, income certificate, and a recent photograph. All documents should be in PDF or JPEG format and should meet the size and clarity requirements mentioned on the portal.
+        <section className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+          <h2 className="font-bold text-2xl text-blue-700 mb-4">Step 3: Provide Educational Information</h2>
+          <p className="leading-relaxed">
+            In this step, enter your academic qualifications, including details about your Class 12 marks, school name, and any additional academic achievements. Ensure that all information is accurate as it may impact your eligibility for the scholarship.
           </p>
         </section>
 
-        <section>
-          <h2 className="font-semibold text-2xl mb-3">Step 4: Review and Submit</h2>
-          <p>
-            Before submitting your application, carefully review all entered information and uploaded documents. Once submitted, no further edits can be made. Click on the &quot;Submit Application&quot; button to finalize your application.
+        <section className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+          <h2 className="font-bold text-2xl text-blue-700 mb-4">Step 4: Upload Important Documents</h2>
+          <p className="leading-relaxed">
+            Prepare and upload all required documents, such as proof of identity, academic transcripts, income certificate, domicile certificate, and a recent passport-sized photograph. Documents should be in PDF or JPEG format and should meet the size and clarity requirements specified on the portal.
           </p>
         </section>
 
-        <section>
-          <h2 className="font-semibold text-2xl mb-3">Step 5: Confirmation and Tracking</h2>
-          <p>
-            After submission, you will receive an email confirmation with your application number. Use this number to track the status of your application through the portal.
+        <section className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+          <h2 className="font-bold text-2xl text-blue-700 mb-4">Step 5: Enter Bank Details</h2>
+          <p className="leading-relaxed">
+            In this final step, enter your bank details, including the bank name, branch, account number, and IFSC code. These details are essential for disbursement if you are selected for the scholarship. Double-check the accuracy of this information to avoid any issues.
+          </p>
+        </section>
+
+        <section className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+          <h2 className="font-bold text-2xl text-blue-700 mb-4">Step 6: Review and Submit</h2>
+          <p className="leading-relaxed">
+            Before submitting your application, review all entered information and uploaded documents. Note that you won&apos;t be able to edit the application after submission. Once you are confident that all information is accurate, click on <strong>&quot&quot;Submit Application&quot;</strong> to finalize your application.
+          </p>
+        </section>
+
+        <section className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
+          <h2 className="font-bold text-2xl text-blue-700 mb-4">Step 7: Confirmation and Tracking</h2>
+          <p className="leading-relaxed">
+            After submission, you&apos;ll receive an email confirmation with your application number. Use this number to track the status of your application on the portal. You will also be notified of any updates regarding your application via email.
           </p>
         </section>
       </div>
