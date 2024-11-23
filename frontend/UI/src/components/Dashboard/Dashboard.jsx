@@ -8,7 +8,7 @@ function Dashboard() {
   const formData = location.state?.formData || location.state?.userData || {
     name: "John Doe",
     applicantId: "1234567890",
-    photoUrl: "https://via.placeholder.com/150"
+    photoUrl: "Images/tamagno.jpg"
 };
 
 
